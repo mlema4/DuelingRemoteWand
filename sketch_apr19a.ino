@@ -14,8 +14,5 @@ lcd[1].print("World!");
 }
 
 void loop()
-{
-
- 
+{ 
 }
-
