@@ -28,6 +28,7 @@ st - 16756815           200+ 16756815
 int IRpin = 11;
 IRrecv irrecv(IRpin);
 decode_results results;
+
 byte spell;
 
 void setup() {
@@ -39,17 +40,12 @@ void setup() {
 }
 
 void loop() {
-  delay(100);
+  delay(1000);
 }
 
 // function that executes whenever data is requested by master
 // this function is registered as an event, see setup()
 void requestEvent() {
-  
-
-
-
-
   if (irrecv.decode(&results)) 
     {
       Serial.println(results.value); // Print the Serial 'results.value'
@@ -66,6 +62,6 @@ void requestEvent() {
   else if (results.value ==  16716015) 
     Wire.write("Expelliarmus");
   else     
-    Wire.write("5nothing");
+    Wire.write("1nothing");
   // as expected by master
 }
