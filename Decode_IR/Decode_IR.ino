@@ -41,4 +41,5 @@ void loop()
       Serial.println(results.value, DEC); // Print the Serial 'results.value'
       irrecv.resume();   // Receive the next value
     }
+    delay(1000);
 }

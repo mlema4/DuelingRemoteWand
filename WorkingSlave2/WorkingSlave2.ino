@@ -1,4 +1,4 @@
-/*This slave will use the black wand
+/*This slave will use the white wand
  * Black Wand           White Wand
 0 - 16738455            0 - 16738455
 1 - 16724175            1 - 16724175
@@ -22,6 +22,7 @@ up - 16748655           EQ - 16748655
 EQ - 16750695         100+  16750695
 st - 16756815           200+ 16756815
  */
+ 
 #include <Wire.h>
 #include <IRremote.h>
 
@@ -34,7 +35,7 @@ void setup() {
 
   Serial.begin(9600);
   irrecv.enableIRIn(); // Start the receiver
-  Wire.begin(8);                // join i2c bus with address #8
+  Wire.begin(9);                // join i2c bus with address #8
   Wire.onRequest(requestEvent); // register event
 }
 
@@ -55,17 +56,17 @@ void requestEvent() {
       Serial.println(results.value); // Print the Serial 'results.value'
       irrecv.resume();   // Receive the next value
     }
-  if (results.value == 16738455) //16738455 is button 0
-    Wire.write("Stupefy"); // respond with message of 6 bytes
-  else if (results.value == 16724175) 
+  if (results.value == 16726215)
+    Wire.write("Stupefy");
+  else if (results.value == 16734855) 
     Wire.write("Rennervate");
-  else if (results.value == 16718055) 
+  else if (results.value == 16728765) 
     Wire.write("QReducto");
-  else if (results.value == 16743045) 
+  else if (results.value == 16730805) 
     Wire.write("Protego");
-  else if (results.value ==  16716015) 
+  else if (results.value == 16732845 ) 
     Wire.write("Expelliarmus");
   else     
-    Wire.write("5nothing");
+    Wire.write("1nothing");
   // as expected by master
 }
